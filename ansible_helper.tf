@@ -20,9 +20,6 @@ resource "time_sleep" "wait_for_bastion_init" {
 
   create_duration = "120s"
 
-  triggers = {
-    "always_run" = timestamp()
-  }
 }
 
 
@@ -32,10 +29,6 @@ resource "null_resource" "provisioner" {
     time_sleep.wait_for_bastion_init,
     aws_instance.bastion
     ]
-
-  triggers = {
-    "always_run" = timestamp()
-  }
 
   provisioner "file" {
     source  = "${path.root}/inventory"
@@ -67,10 +60,6 @@ resource "null_resource" "copy_ansible_playbooks" {
     aws_instance.bastion,
     local_file.ansible_vars_file
     ]
-
-  triggers = {
-    "always_run" = timestamp()
-  }
 
   provisioner "file" {
       source = "${path.root}/ansible"
