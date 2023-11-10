@@ -5,6 +5,7 @@ provider "registry.terraform.io/hashicorp/aws" {
   version     = "5.24.0"
   constraints = ">= 5.0.0, 5.24.0"
   hashes = [
+    "h1:6bCvCMCu8Al0/a+lyL05mS1JEkALWb6vEH9Ub3Jd8RE=",
     "h1:tAteY6hnPFlxGx88cjNXQT3x5Of6lz0EUaZTn3wsjUA=",
     "zh:164b4ac71c9fc6b991021dd6e829591b0c1a0ebfb5831da0a7eb4f10f92c76a7",
     "zh:22e85772a1767498796f160b54a156db8173c4e238469dad8328a65093e033e1",
@@ -27,6 +28,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 provider "registry.terraform.io/hashicorp/local" {
   version = "2.4.0"
   hashes = [
+    "h1:Bs7LAkV/iQTLv72j+cTMrvx2U3KyXrcVHaGbdns1NcE=",
     "h1:ZUEYUmm2t4vxwzxy1BvN1wL6SDWrDxfH7pxtzX8c6d0=",
     "zh:53604cd29cb92538668fe09565c739358dc53ca56f9f11312b9d7de81e48fab9",
     "zh:66a46e9c508716a1c98efbf793092f03d50049fa4a83cd6b2251e9a06aca2acf",
@@ -46,6 +48,7 @@ provider "registry.terraform.io/hashicorp/local" {
 provider "registry.terraform.io/hashicorp/null" {
   version = "3.2.1"
   hashes = [
+    "h1:tSj1mL6OQ8ILGqR2mDu7OYYYWf+hoir0pf9KAQ8IzO8=",
     "h1:ydA0/SNRVB1o95btfshvYsmxA+jZFRZcvKzZSB+4S1M=",
     "zh:58ed64389620cc7b82f01332e27723856422820cfd302e304b5f6c3436fb9840",
     "zh:62a5cc82c3b2ddef7ef3a6f2fedb7b9b3deff4ab7b414938b08e51d6e8be87cb",
@@ -65,6 +68,7 @@ provider "registry.terraform.io/hashicorp/null" {
 provider "registry.terraform.io/hashicorp/time" {
   version = "0.9.1"
   hashes = [
+    "h1:UHcDnIYFZ00uoou0TwPGMwOrE8gTkoRephIvdwDAK70=",
     "h1:VxyoYYOCaJGDmLz4TruZQTSfQhvwEcMxvcKclWdnpbs=",
     "zh:00a1476ecf18c735cc08e27bfa835c33f8ac8fa6fa746b01cd3bcbad8ca84f7f",
     "zh:3007f8fc4a4f8614c43e8ef1d4b0c773a5de1dcac50e701d8abc9fdc8fcb6bf5",
@@ -85,6 +89,7 @@ provider "registry.terraform.io/hashicorp/tls" {
   version = "4.0.4"
   hashes = [
     "h1:GZcFizg5ZT2VrpwvxGBHQ/hO9r6g0vYdQqx3bFD3anY=",
+    "h1:Wd3RqmQW60k2QWPN4sK5CtjGuO1d+CRNXgC+D4rKtXc=",
     "zh:23671ed83e1fcf79745534841e10291bbf34046b27d6e68a5d0aab77206f4a55",
     "zh:45292421211ffd9e8e3eb3655677700e3c5047f71d8f7650d2ce30242335f848",
     "zh:59fedb519f4433c0fdb1d58b27c210b27415fddd0cd73c5312530b4309c088be",
