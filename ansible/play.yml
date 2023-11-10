@@ -175,6 +175,23 @@
 
    - name: Copy worker node join command to local file
      local_action: copy content="{{ join_node_command.stdout_lines[0] }}" dest="./join_node_command"
+
+   - name: Install helm if not exists
+     unarchive:
+       src: https://get.helm.sh/helm-v3.11.0-linux-amd64.tar.gz
+       dest: /usr/local/bin
+       extra_opts: "--strip-components=1"
+       owner: root
+       group: root
+       mode: 0755
+       remote_src: true
+     args:
+       creates: /usr/local/bin/helm
+   - name: Install Mysql
+     shell: helm install mysql oci://registry-1.docker.io/bitnamicharts/mysql
+
+
+
 ###
 
 #### Configure other master nodes
