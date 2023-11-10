@@ -2,7 +2,7 @@
 ansible_ssh_common_args='-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
 [masters_first]
-            ip-10-0-1-247.eu-west-1.compute.internal ansible_host=10.0.1.247 # i-063737f8fe3976411
+            ip-10-0-1-236.eu-west-1.compute.internal ansible_host=10.0.1.236 # i-07fb314add8acd32b
     
 [masters_others]
     
@@ -11,5 +11,5 @@ masters_first
 masters_others
 
 [workers]
-ip-10-0-1-178.eu-west-1.compute.internal ansible_host=10.0.1.178 # i-00070eab89b0883f6
-ip-10-0-2-32.eu-west-1.compute.internal ansible_host=10.0.2.32 # i-0b721d52a0c0f06d2
+ip-10-0-1-58.eu-west-1.compute.internal ansible_host=10.0.1.58 # i-03d5f354bf4bb448e
+ip-10-0-2-166.eu-west-1.compute.internal ansible_host=10.0.2.166 # i-07fb1c801d6a60ddf

@@ -58,15 +58,7 @@ resource "aws_iam_role_policy" "master_policy" {
         {
             "Effect": "Allow",
             "Action": [
-                "ec2:*",
-                "elasticloadbalancing:*",
-                "ecr:GetAuthorizationToken",
-                "ecr:BatchCheckLayerAvailability",
-                "ecr:GetDownloadUrlForLayer",
-                "ecr:GetRepositoryPolicy",
-                "ecr:DescribeRepositories",
-                "ecr:ListImages",
-                "ecr:BatchGetImage"
+                "ec2:*"
             ],
             "Resource": "*"
         }
