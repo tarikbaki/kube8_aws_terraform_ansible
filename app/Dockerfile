@@ -1,0 +1,12 @@
+FROM python:alpine3.15
+RUN mkdir /app
+WORKDIR /app
+RUN apk update \
+    && apk add --virtual build-deps gcc python3-dev musl-dev \
+    && apk add --no-cache mariadb-dev
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+RUN apk del build-deps
+COPY . .
+#CMD ["python", "app.py"]
+RUN gunicorn app:application -w 4 --threads 2 -b 0.0.0.0:3000
