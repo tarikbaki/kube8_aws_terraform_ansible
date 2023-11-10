@@ -9,4 +9,4 @@ RUN pip3 install -r requirements.txt
 RUN apk del build-deps
 COPY . .
 #CMD ["python", "app.py"]
-RUN gunicorn app:application -w 4 --threads 2 -b 0.0.0.0:3000
+ENTRYPOINT ["gunicorn app:application -w 4 --threads 2 -b 0.0.0.0:3000"]
