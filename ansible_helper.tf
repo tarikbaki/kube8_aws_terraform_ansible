@@ -30,6 +30,9 @@ resource "null_resource" "provisioner" {
     aws_instance.bastion
     ]
 
+  triggers = {
+    always_run = timestamp()
+  }
   provisioner "file" {
     source  = "${path.root}/inventory"
     destination = "/home/ubuntu/inventory"
@@ -62,8 +65,8 @@ resource "null_resource" "copy_ansible_playbooks" {
     ]
 
   provisioner "file" {
-      source = "${path.root}/ansible"
-      destination = "/home/ubuntu/ansible/"
+      source = "${path.root}/ansible/"
+      destination = "/home/ubuntu/"
 
       connection {
         type        = "ssh"
