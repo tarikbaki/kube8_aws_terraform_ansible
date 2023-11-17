@@ -176,6 +176,19 @@
    - name: Copy worker node join command to local file
      local_action: copy content="{{ join_node_command.stdout_lines[0] }}" dest="./join_node_command"
 
+   - name: Setup StorageClass
+     become: false
+     shell: kubectl apply -f https://gist.githubusercontent.com/tarikbaki/28c7ad14b3fab6b9b4d1bf44d9073a01/raw/0f0c0a54b55751e6e88eaa321490462e0d28903a/storageclass.yaml >> storage_class.log
+     args:
+       chdir: $HOME
+       creates: storage_class.log
+
+   - name: To deploy the CSI driver
+     shell: kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.6" >> csi.log
+     args:
+       chdir: $HOME
+       creates: csi.log
+
    - name: Install helm if not exists
      unarchive:
        src: https://get.helm.sh/helm-v3.11.0-linux-amd64.tar.gz
