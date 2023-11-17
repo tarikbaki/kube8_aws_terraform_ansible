@@ -187,12 +187,6 @@
        remote_src: true
      args:
        creates: /usr/local/bin/helm
-   - name: Install Mysql
-     become: false
-     shell: helm install mysql oci://registry-1.docker.io/bitnamicharts/mysql
-
-
-
 ###
 
 #### Configure other master nodes
@@ -261,3 +255,12 @@
     - name: Join the worker node to cluster
       command: sh /tmp/join_node_command.sh
 #####
+
+### Master Node Mysql installation
+- hosts: masters_first
+  become: yes
+  vars_files:
+    - ansible_vars_file.yml
+    - name: Install Mysql
+      become: false
+      shell: helm install mysql oci://registry-1.docker.io/bitnamicharts/mysql
