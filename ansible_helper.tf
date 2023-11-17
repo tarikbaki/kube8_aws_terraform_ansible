@@ -63,7 +63,9 @@ resource "null_resource" "copy_ansible_playbooks" {
     aws_instance.bastion,
     local_file.ansible_vars_file
     ]
-
+  triggers = {
+    always_run = timestamp()
+  }
   provisioner "file" {
       source = "${path.root}/ansible/"
       destination = "/home/ubuntu/"
@@ -107,7 +109,7 @@ resource "null_resource" "run_ansible" {
   provisioner "remote-exec" {
     inline = [
       "echo 'starting ansible playbooks...'",
-      "sleep 60 && ansible-playbook -i /home/ubuntu/inventory /home/ubuntu/ansible/play.yml ",
+      "sleep 60 && ansible-playbook -i /home/ubuntu/inventory /home/ubuntu/play.yml ",
     ] 
   }
 }
