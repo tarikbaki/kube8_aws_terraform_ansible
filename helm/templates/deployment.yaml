@@ -1,0 +1,69 @@
+apiVersion: apps/v1 # API version to use for all resources in the manifest
+kind: Deployment # Kind of the resource to create
+metadata:
+  name: {{ .Release.Name }} # Name of the resource to create
+  namespace: {{ .Release.Namespace }} # Namespace to create the resource in
+  labels:
+    app: {{ .Values.deployment.name }} # Label to apply to the resource
+spec:
+  replicas: {{ .Values.deployment.replicas }} # Number of replicas to create
+  strategy:
+    type: RollingUpdate # Type of the deployment strategy
+    rollingUpdate:
+      maxSurge: {{ .Values.deployment.strategy.rollingUpdate.maxSurge }} # Maximum number of pods to create
+      maxUnavailable: {{ .Values.deployment.strategy.rollingUpdate.maxUnavailable }} # Maximum number of pods to delete
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.name }} # Label to select the resource
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deployment.name }} # Label to apply to the resource
+    spec:
+      containers:
+        - name: {{ .Values.deployment.container.name }} # Name of the container in the pod
+          image: {{ .Values.deployment.container.image }} # Image to use for the container
+          imagePullPolicy: {{ .Values.deployment.container.imagePullPolicy }} # Image pull policy to use for the container
+          ports:
+            - containerPort: {{ .Values.deployment.container.port }} # Port to expose on the container
+              protocol: {{ .Values.deployment.container.protocol }} # Protocol to use for the port
+          env:
+          - name: MYSQL_USERNAME
+            value: "root" # Environment variable to set for the container
+          - name: MYSQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql
+                key: mysql-root-password
+          - name: MYSQL_INSTANCE_NAME
+            value: "app"
+          - name: MYSQL_PORT_3306_TCP_ADDR
+            value: "mysql"
+          - name: MYSQL_PORT_3306_TCP_PORT
+            value: "3306"
+          resources:
+            requests:
+              cpu: {{ .Values.deployment.container.resources.requests.cpu }} # CPU to request for the container
+              memory: {{ .Values.deployment.container.resources.requests.memory }} # Memory to request for the container
+            limits:
+              cpu: {{ .Values.deployment.container.resources.limits.cpu }} # CPU to limit for the container
+              memory: {{ .Values.deployment.container.resources.limits.memory }} # Memory to limit for the container
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.deployment.container.livenessProbe.path}} # Path to check for liveness
+              port: {{ .Values.deployment.container.livenessProbe.port }} # Port to check for liveness
+            initialDelaySeconds: {{ .Values.deployment.container.livenessProbe.initialDelaySeconds }} # Initial delay before liveness check
+            timeoutSeconds: {{ .Values.deployment.container.livenessProbe.timeoutSeconds }} # Timeout before liveness check
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.deployment.container.readinessProbe.path }} # Path to check for readiness
+              port: {{ .Values.deployment.container.readinessProbe.port }} # Port to check for readiness
+            initialDelaySeconds: {{ .Values.deployment.container.readinessProbe.initialDelaySeconds }} # Initial delay before readiness check
+            timeoutSeconds: {{ .Values.deployment.container.readinessProbe.timeoutSeconds }} # Timeout before readiness check
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop:
+                - ALL
