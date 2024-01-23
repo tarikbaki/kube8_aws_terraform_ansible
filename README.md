@@ -3,7 +3,7 @@
 ### Tech Stack
 Terraform, Ansible, Docker, cri-dockerd, kubeadm, Kubernetes, Ubuntu, AWS {VPC, EC2, NLB}
 
-This repo contain the all required automation code for setting up Kubernetes cluster using kubeadm in AWS cloud environment. I have tested all the scripts successfully on Ubuntu 18.04.
+This repo contain the all required automation code for setting up Kubernetes cluster using kubeadm in AWS cloud environment.
 
 #### Infrastructure Provisioning
 Terraform for all the infrastructure provisioning automation.
@@ -12,7 +12,7 @@ Terraform for all the infrastructure provisioning automation.
 Ansible for all Server & Cluster configurations.
 
 ## Architecture Diagram
-![alt text](https://raw.githubusercontent.com/lkravi/kube8aws/multi-master/architecture.png)
+(https://raw.githubusercontent.com/lkravi/kube8aws/multi-master/architecture.png)
 
 
 ### Prerequisites
@@ -34,15 +34,6 @@ Terraform apply will make sure it will provision all required infrastructure and
 
 > To ssh to the Bastion host you can find the "k8_ssh_key.pem" private key in your project folder. This will be dynamically created during infrastructure provisioning and added to the bastion host as well. Same key will be used to configure the ansible host and clients.
 
-## Demo
-
-[![Watch the video](https://img.youtube.com/vi/Oxv7ZA-iOpc/maxresdefault.jpg)](https://www.youtube.com/watch?v=Oxv7ZA-iOpc)
 
 #### Issues:
-I have experienced following issues so far when I working with different flavors of Linux.
 
-Amazon-linux2
-https://github.com/ansible/ansible/issues/62722
-
-Centos
-https://github.com/hashicorp/terraform/issues/30134
