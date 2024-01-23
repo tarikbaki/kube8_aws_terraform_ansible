@@ -11,18 +11,12 @@ Terraform for all the infrastructure provisioning automation.
 #### Kubernetes Cluster Setup 
 Ansible for all Server & Cluster configurations.
 
-## Architecture Diagram
-(https://raw.githubusercontent.com/lkravi/kube8aws/multi-master/architecture.png)
-
-
 ### Prerequisites
 * You need to have your [AWS CLI configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html). 
 
 ## Usage
 
 Clone this repo first then check the vars.tf for the AWS & Kubernetes cluster configurations. I already added default values for each variable. You can override any variable via command line or as a variable file.
-
-> If you are changing AWS region, please make sure to change the ami_id variable as well. You can click [here](https://cloud-images.ubuntu.com/locator/ec2/) to locate ubuntu ami for any AWS region.
 
 Once you review the configuration you just need to apply the terraform code.
 
