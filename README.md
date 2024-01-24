@@ -28,6 +28,7 @@ Terraform apply will make sure it will provision all required infrastructure and
 
 > To ssh to the Bastion host you can find the "k8_ssh_key.pem" private key in your project folder. This will be dynamically created during infrastructure provisioning and added to the bastion host as well. Same key will be used to configure the ansible host and clients.
 
+## Architecture
+![image](https://github.com/tarikbaki/kube8_aws_terraform_ansible/assets/56624571/b3a08922-a680-475c-be67-20d95b72ff8d)
 
-#### Issues:
 
